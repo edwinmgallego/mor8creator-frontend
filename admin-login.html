@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>>_ Admin Login | Acceso Restringido</title>
+    <link rel="shortcut icon" href="./img/Gemini_Generated_Image_ciguw8ciguw8cigu.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+</head>
+<body class="old-crt-monitor">
+    <div class="retro-container scanline-effect">
+        <header>
+            <div class="header-top">
+                <h1><span aria-hidden="true">&gt;_ </span>Edwin Gallego | NODE_CENTRAL</h1>
+            </div>
+            </header>
+
+        <main id="app-content">
+            <section id="login-section" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%;">
+                <article style="width: 100%; max-width: 400px; border: 1px dashed var(--primary-color); padding: 2rem; background: rgba(0,0,0,0.5);">
+                    <header style="text-align: center; margin-bottom: 1.5rem;">
+                        <h2><span aria-hidden="true">&gt; </span>sudo su -</h2>
+                        <p class="meta-info">SISTEMA DE AUTENTICACIÓN REQUERIDO</p>
+                    </header>
+                    
+                    <form id="admin-login-form" class="retro-form">
+                        <div class="form-group">
+                            <label for="admin-user">USER_ID:</label>
+                            <input type="text" id="admin-user" required placeholder="_">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-pass">PASSWORD:</label>
+                            <input type="password" id="admin-pass" required placeholder="_">
+                        </div>
+                        <button type="submit" class="btn-retro form-submit" style="width: 100%; margin-top: 1rem;">[ INICIAR SESIÓN ]</button>
+                        <p id="login-status" class="alert hidden" style="margin-top: 1rem; text-align: center;"></p>
+                    </form>
+                </article>
+            </section>
+        </main>
+
+        <footer style="margin-top: auto;">
+            <div class="footer-info">
+                <p>SYSTEM STATUS: <span class="alert">LOCKED</span></p>
+            </div>
+            <div class="footer-controls">
+                <a href="index.html" class="btn-retro"><< ABORTAR Y VOLVER</a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

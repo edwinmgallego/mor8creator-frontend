@@ -1,0 +1,459 @@
+/* Tus variables originales (Modo Oscuro) se mantienen igual */
+:root {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    --primary-color: #ffd52c;
+    --secondary-color: #ff5c00;
+    --tertiary-color: #c72d04;
+    --background-color: #111;
+    scrollbar-color: var(--primary-color) var(--secondary-color);
+    font-size: clamp(12px, 3vw, 20px);
+}
+
+/* --- NUEVO: MODO CLARO (VIDEO INVERSO) --- */
+/* Al ponerle esta clase al body, todo el sitio cambia automáticamente */
+body.light-theme {
+    --primary-color: #1a1a1a; /* Texto gris muy oscuro/casi negro */
+    --background-color: #e8e8e8; /* Fondo blanco sucio/gris claro retro */
+    /* Oscurecemos un poco los naranjas para mantener un buen contraste de lectura */
+    --secondary-color: #cc4a00; 
+    --tertiary-color: #992303;
+}
+
+/* ... Mantén todo tu código CSS existente debajo de esto ... */
+
+/* Añade esto al final del archivo para agrupar los botones del footer */
+.footer-controls {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--background-color);
+}
+
+/* --- ESTRUCTURA PRINCIPAL --- */
+div.retro-container {
+    width: 95vw; /* Ajustado para dar más espacio en móviles */
+    height: 92vh;
+    display: flex; /* Cambiado a flex para facilitar la responsividad */
+    flex-direction: column;
+    overflow: hidden;
+    padding: 1.5rem;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    mask-image: linear-gradient(to bottom, #0005 50%, #000 50%);
+    mask-size: 100% 2px;
+    text-shadow: 0 0 0.5rem;
+}
+
+header, footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+main {
+    flex: 1; /* Permite que el main ocupe el espacio disponible */
+    overflow-y: auto;
+    position: relative;
+}
+
+section {
+    height: 100%;
+    overflow: hidden auto;
+}
+
+/* --- NAVEGACIÓN --- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--secondary-color);
+    text-shadow: 0 0 1rem var(--secondary-color);
+    outline: none;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.nav-links a.active-link {
+    color: var(--secondary-color);
+    text-shadow: 0 0 1rem var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+/* Evitar que el h2 con tabindex="-1" muestre el outline azul */
+h2:focus {
+    outline: none;
+}
+
+/* --- MENÚ HAMBURGUESA (ESTRUCTURA BASE) --- */
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--primary-color);
+    position: relative;
+}
+
+.hamburger::before, .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 2px;
+    background: var(--primary-color);
+    left: 0;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { bottom: -8px; }
+
+/* --- EFECTOS Y ANIMACIONES --- */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background-color: var(--primary-color);
+    animation: blink-cursor 1s step-end infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes crtAnimation {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 10000%; }
+}
+
+.old-crt-monitor {
+    box-shadow: inset 0px 0px 2rem #000;
+    background-image: linear-gradient(0deg, #0000 10%, #fff1 90%, #0000 100%);
+    animation: crtAnimation 100s linear infinite;
+    background-size: 100% 80%;
+}
+
+.alert {
+    animation: blink-bg 1s ease-out infinite;
+}
+
+@keyframes blink-bg {
+    0%, 60% {
+        text-shadow: 0 0 10.5rem;
+        color: var(--primary-color);
+    }
+    70%, 100% {
+        text-shadow: 0 0 20.5rem;
+        color: var(--tertiary-color);
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- FORMULARIO DE CONTACTO --- */
+.retro-form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    max-width: 600px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.retro-form label {
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+}
+
+.retro-form input,
+.retro-form textarea {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-family: "VT323", monospace;
+    font-size: clamp(16px, 2vw, 24px);
+    padding: 0.5rem;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.retro-form input:focus,
+.retro-form textarea:focus {
+    border-color: var(--secondary-color);
+    box-shadow: inset 0 0 8px var(--secondary-color), 0 0 8px var(--secondary-color);
+}
+
+.retro-form input::placeholder,
+.retro-form textarea::placeholder {
+    color: var(--primary-color);
+    opacity: 0.5;
+    animation: blink-cursor 1s step-end infinite;
+}
+
+.form-submit {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+#form-status {
+    margin-top: 1rem;
+}
+
+.content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.content a:hover,
+.content a:focus {
+    color: var(--secondary-color);
+    text-shadow: 0 0 1rem var(--secondary-color);
+    outline: none;
+    border-left: 5px solid var(--secondary-color); 
+    padding-left: 0.5rem;
+    transition: all 0.1s ease;
+}
+
+/* --- FOOTER --- */
+footer {
+    border-top: 1px solid var(--primary-color);
+    padding-top: 1rem;
+    width: 100%;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-socials a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.footer-socials a:hover,
+.footer-socials a:focus {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+    outline: none;
+}
+
+/* --- ACCESIBILIDAD (A11Y) --- */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.btn-retro {
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    font-family: "VT323", monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-retro:hover, 
+.btn-retro:focus {
+    background: var(--primary-color);
+    color: var(--background-color);
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+body.reduce-motion .old-crt-monitor,
+body.reduce-motion .scanline-effect {
+    animation: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+body.reduce-motion .cursor,
+body.reduce-motion .alert {
+    animation: none !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+body.reduce-motion div.retro-container {
+    mask-image: none !important;
+    text-shadow: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    div.retro-container {
+        mask-image: none !important;
+        text-shadow: none !important;
+    }
+}
+
+/* =========================================
+   MEDIA QUERIES (RESPONSIVIDAD MÓVIL)
+   ========================================= */
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Muestra el botón hamburguesa */
+    }
+
+    nav#main-nav {
+        display: none; /* Oculta los enlaces por defecto */
+        width: 100%;
+        border-top: 1px solid var(--primary-color);
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    nav#main-nav.is-open {
+        display: block; /* Se activa con JS */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 213, 44, 0.2);
+    }
+    
+    .nav-links a.active-link {
+        border-bottom: 2px solid var(--secondary-color);
+    }
+
+    .footer-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .footer-socials {
+        flex-wrap: wrap;
+    }
+}
+
+/* =========================================
+   ESTILOS DEL CALENDARIO DE GITHUB (RETRO)
+   ========================================= */
+.calendar-container {
+    border: 1px dashed var(--primary-color);
+    padding: 1rem;
+    margin-top: 1rem;
+    font-family: "VT323", monospace;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Forzamos los colores de los "cuadritos" para que combinen con el tema */
+/* Nivel 0: Sin contribuciones (Apagado) */
+.calendar-container svg rect[data-level="0"] { 
+    fill: #222 !important; 
+    stroke: #333 !important;
+}
+/* Nivel 1: Pocas contribuciones (Tenue) */
+.calendar-container svg rect[data-level="1"] { 
+    fill: #5c4d10 !important; 
+}
+/* Nivel 2: Media (Medio) */
+.calendar-container svg rect[data-level="2"] { 
+    fill: #8a7318 !important; 
+}
+/* Nivel 3: Alta (Brillante) */
+.calendar-container svg rect[data-level="3"] { 
+    fill: var(--secondary-color) !important; 
+}
+/* Nivel 4: Muy alta (Máximo brillo/Alerta) */
+.calendar-container svg rect[data-level="4"] { 
+    fill: var(--primary-color) !important; 
+    filter: drop-shadow(0 0 2px var(--primary-color));
+}
+
+/* Ajustes del texto dentro del calendario */
+.calendar-container text {
+    fill: var(--primary-color) !important;
+    font-family: "VT323", monospace !important;
+    font-size: 14px !important;
+}
+
+.calendar-container .contrib-legend {
+    display: none; /* Oculta la leyenda genérica de "Less/More" */
+}

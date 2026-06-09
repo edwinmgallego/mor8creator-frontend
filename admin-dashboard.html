@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>>_ Admin Dashboard | NODE_CENTRAL</title>
+    <link rel="shortcut icon" href="./img/Gemini_Generated_Image_ciguw8ciguw8cigu.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+</head>
+<body class="old-crt-monitor">
+    <div class="retro-container scanline-effect">
+        <header>
+            <div class="header-top">
+                <h1><span aria-hidden="true">&gt;_ </span>NODE_CENTRAL // PANEL DE CONTROL</h1>
+                <button id="logout-btn" class="btn-retro" style="border-color: var(--tertiary-color); color: var(--tertiary-color);">[ CERRAR SESIÓN ]</button>
+            </div>
+        </header>
+<main id="app-content">
+            <section id="admin-dashboard-section" style="display: flex; gap: 2rem; min-height: 60vh; flex-wrap: wrap;">
+                
+                <aside style="flex: 0 0 250px; border-right: 2px dashed var(--primary-color); padding-right: 1.5rem;">
+                    <header style="margin-bottom: 2rem;">
+                        <h2><span aria-hidden="true">&gt; </span>ROOT</h2>
+                        <p class="meta-info">ESTADO: AUTORIZADO</p>
+                    </header>
+                    <nav>
+                        <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                            <li><button class="btn-retro admin-tab-btn active" data-target="panel-blog" style="width: 100%; text-align: left;">[1] /SYS_LOGS (Blog)</button></li>
+                            <li><button class="btn-retro admin-tab-btn" data-target="panel-tutorials" style="width: 100%; text-align: left; border-color: var(--secondary-color); color: var(--secondary-color);">[2] /MANUALS (Tutoriales)</button></li>
+                            <li><button class="btn-retro admin-tab-btn" data-target="panel-courses" style="width: 100%; text-align: left; border-color: var(--tertiary-color); color: var(--tertiary-color);">[3] /ACADEMY (Cursos)</button></li>
+                            <li style="margin-top: 2rem;"><button id="logout-btn" class="btn-retro" style="width: 100%; text-align: left; border-color: red; color: red;">[x] CERRAR SESIÓN</button></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <div style="flex: 1; padding-left: 1rem; min-width: 300px;">
+                    
+                    <article id="panel-blog" class="admin-panel" style="border: 1px solid var(--primary-color); padding: 1.5rem; background: rgba(0,0,0,0.3);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">>> MÓDULO: /SYS_LOGS (BLOG)</h3>
+                        <form id="new-post-form" class="retro-form">
+                            <div class="form-group">
+                                <label for="post-title">TÍTULO DEL REGISTRO:</label>
+                                <input type="text" id="post-title" required placeholder="Ej: Despliegue en Docker">
+                            </div>
+                            <div class="form-group">
+                                <label for="post-content">CONTENIDO (HTML):</label>
+                                <textarea id="post-content" rows="6" required placeholder="<p>Texto...</p>"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="post-video">LINK DE VIDEO (Opcional):</label>
+                                <input type="url" id="post-video" placeholder="https://youtube.com/watch?v=...">
+                            </div>
+                            <button type="submit" class="btn-retro form-submit">[ INYECTAR POST ]</button>
+                            <p id="post-status" class="alert hidden" style="margin-top: 1rem;"></p>
+                        </form>
+                    </article>
+
+                    <article id="panel-tutorials" class="admin-panel hidden" style="border: 1px solid var(--secondary-color); padding: 1.5rem; background: rgba(0,0,0,0.3);">
+                        <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">>> MÓDULO: /MANUALS (TUTORIALES)</h3>
+                        <form id="new-tutorial-form" class="retro-form">
+                            <div class="form-group">
+                                <label for="tutorial-title">TÍTULO DEL MANUAL:</label>
+                                <input type="text" id="tutorial-title" required placeholder="Ej: Configurar Git">
+                            </div>
+                            <div class="form-group">
+                                <label for="tutorial-content">PASO A PASO (HTML):</label>
+                                <textarea id="tutorial-content" rows="4" required placeholder="<ol><li>Paso 1...</li></ol>"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="tutorial-tags">TAGS (Separados por coma):</label>
+                                <input type="text" id="tutorial-tags" required placeholder="Git, Terminal, DevOps">
+                            </div>
+                            <div class="form-group">
+                                <label for="tutorial-level">DIFICULTAD:</label>
+                                <select id="tutorial-level" style="width: 100%; padding: 0.5rem; background: #000; color: var(--secondary-color); border: 1px dashed var(--secondary-color); font-family: 'VT323', monospace; font-size: 1.2rem;">
+                                    <option value="BÁSICO">BÁSICO</option>
+                                    <option value="INTERMEDIO">INTERMEDIO</option>
+                                    <option value="AVANZADO">AVANZADO</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-retro form-submit" style="border-color: var(--secondary-color); color: var(--secondary-color);">[ INYECTAR TUTORIAL ]</button>
+                            <p id="tutorial-status" class="alert hidden" style="margin-top: 1rem;"></p>
+                        </form>
+                    </article>
+
+                    <article id="panel-courses" class="admin-panel hidden" style="border: 1px solid var(--tertiary-color); padding: 1.5rem; background: rgba(0,0,0,0.3);">
+                        <h3 style="color: var(--tertiary-color); margin-bottom: 1rem;">>> MÓDULO: /ACADEMY (CURSOS)</h3>
+                        <form id="new-course-form" class="retro-form">
+                            <div class="form-group">
+                                <label for="course-title">NOMBRE DE CÁTEDRA:</label>
+                                <input type="text" id="course-title" required placeholder="Ej: Programación Orientada a Objetos">
+                            </div>
+                            <div class="form-group">
+                                <label for="course-desc">DESCRIPCIÓN CORTA:</label>
+                                <input type="text" id="course-desc" required placeholder="Fundamentos de OOP con Java...">
+                            </div>
+                            <div class="form-group">
+                                <label for="course-syllabus">SYLLABUS (HTML):</label>
+                                <textarea id="course-syllabus" rows="3" required placeholder="<ul><li>Tema 1...</li></ul>"></textarea>
+                            </div>
+                            <div style="display: flex; gap: 1rem;">
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="course-duration">DURACIÓN:</label>
+                                    <input type="text" id="course-duration" required placeholder="Ej: 16 semanas">
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    <label for="course-status-select">ESTADO:</label>
+                                    <select id="course-status-select" style="width: 100%; padding: 0.5rem; background: #000; color: var(--tertiary-color); border: 1px dashed var(--tertiary-color); font-family: 'VT323', monospace; font-size: 1.2rem;">
+                                        <option value="ACTIVO">ACTIVO</option>
+                                        <option value="PLANIFICADO">PLANIFICADO</option>
+                                        <option value="COMPLETADO">COMPLETADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-retro form-submit" style="border-color: var(--tertiary-color); color: var(--tertiary-color);">[ INYECTAR CURSO ]</button>
+                            <p id="course-status" class="alert hidden" style="margin-top: 1rem;"></p>
+                        </form>
+                    </article>
+
+                </div>
+            </section>
+        </main>
+
+        <footer style="margin-top: auto;">
+            <div class="footer-info">
+                <p>SYSTEM STATUS: <span style="color: var(--secondary-color);">OVERRIDE ACTIVE</span></p>
+            </div>
+            <div class="footer-controls">
+                <a href="index.html" class="btn-retro" target="_blank">IR AL FRONTEND >></a>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
