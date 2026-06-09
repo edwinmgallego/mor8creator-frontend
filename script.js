@@ -86,7 +86,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
                 try {
                     // Enviamos la petición POST al backend
-                    const response = await fetch('http://localhost:5000/api/messages', {
+                    const response = await fetch('https://mor8creator-backend.onrender.com:5000/api/messages', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -181,7 +181,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const logFeed = document.querySelector('.log-feed');
         if (!logFeed) return;
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             logFeed.innerHTML = '<p class="meta-info">>> ESTABLECIENDO CONEXIÓN CON EL NODO CENTRAL...</p>';
@@ -235,7 +235,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             articleFeed.innerHTML = '<p class="meta-info">>> SOLICITANDO PAQUETE DE DATOS AL NODO CENTRAL...</p>';
@@ -304,7 +304,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const projectsFeed = document.querySelector('.projects-feed');
         if (!projectsFeed) return; 
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             projectsFeed.innerHTML = '<p class="meta-info">>> CONECTANDO AL REPOSITORIO LOCAL DE PROYECTOS...</p>';
@@ -358,7 +358,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             projectDetailFeed.innerHTML = '<p class="meta-info">>> EXTRACCIÓN DE ENTRADAS DE REGISTRO EN CURSO...</p>';
@@ -405,7 +405,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const tutorialFeed = document.querySelector('.tutorial-feed');
         if (!tutorialFeed) return;
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             tutorialFeed.innerHTML = '<p class="meta-info">>> INDEXANDO MANUALES DISPONIBLES...</p>';
@@ -461,7 +461,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             tutorialDetailFeed.innerHTML = '<p class="meta-info">>> LEYENDO BLOQUES DE MEMORIA...</p>';
@@ -510,7 +510,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const coursesFeed = document.querySelector('.courses-feed');
         if (!coursesFeed) return;
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             coursesFeed.innerHTML = '<p class="meta-info">>> CARGANDO CATÁLOGO DE ASIGNATURAS VIGENTES...</p>';
@@ -564,7 +564,7 @@ window.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const API_URL = 'http://localhost:5000/api';
+        const API_URL = 'https://mor8creator-backend.onrender.com:5000/api';
 
         try {
             courseDetailFeed.innerHTML = '<p class="meta-info">>> LEYENDO REQUISITOS DEL PLAN DE ESTUDIOS...</p>';
@@ -620,7 +620,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 };
 
                 try {
-                    const response = await fetch('http://localhost:5000/api/auth/login', {
+                    const response = await fetch('https://mor8creator-backend.onrender.com:5000/api/auth/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -742,7 +742,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     content: document.getElementById('post-content').value,
                     videoUrl: document.getElementById('post-video').value
                 };
-                handleInyection('http://localhost:5000/api/posts', data, document.getElementById('post-status'), postForm);
+                handleInyection('https://mor8creator-backend.onrender.com:5000/api/posts', data, document.getElementById('post-status'), postForm);
             });
         }
 
@@ -759,7 +759,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     tags: tagsArray,
                     level: document.getElementById('tutorial-level').value
                 };
-                handleInyection('http://localhost:5000/api/tutorials', data, document.getElementById('tutorial-status'), tutorialForm);
+                handleInyection('https://mor8creator-backend.onrender.com:5000/api/tutorials', data, document.getElementById('tutorial-status'), tutorialForm);
             });
         }
 
@@ -775,7 +775,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     duration: document.getElementById('course-duration').value,
                     status: document.getElementById('course-status-select').value
                 };
-                handleInyection('http://localhost:5000/api/courses', data, document.getElementById('course-status'), courseForm);
+                handleInyection('https://mor8creator-backend.onrender.com:5000/api/courses', data, document.getElementById('course-status'), courseForm);
             });
         }
     };
